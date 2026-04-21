@@ -1,0 +1,670 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Community</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #fff;
+      color: #000;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      color: #000;
+      margin-bottom: 30px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .slide {
+      background: #fff;
+      border: 1px solid #fff;
+      box-shadow: 0 2px 4px 6px rgba(0,0,0,0.5);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .slide:hover {
+      transform: scale(1.5);
+    }
+    .slide img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+    }
+    .caption {
+      padding: 8px;
+      font-size: 0.9em;
+      text-align: center;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .start-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .start-button button {
+        width: 200px;
+        height: 30px;
+        border: none;
+        background: #000;
+        border-radius: 10px;
+        color: #fff;
+    }
+
+    .start-button button a {
+        text-decoration: none;
+    }
+
+    .content .content-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .content .content-phase {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .content .content-event {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-h">
+            <h1>Tech Community</h1>
+            <i>Mona Inc</i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('sign')}}">Get Started</a></li>
+                    <i>~Sign Up</i>
+                <li><a href="{{url_for('log')}}">Welcome Back</a></li>
+                    <i>~Logn In</i>
+                <li><a href="#">Donate</a></li>
+                    <i>~Support me</i>
+            </ul>
+        </nav>
+    </header>
+    <main class="content">
+        <div class="content-header">
+            <h2>Mona Tech</h2>
+        </div>
+        <div class="content-phase">
+            <p>Join the Community, able to get tech news, Updates, testing programs and even get them for free..This is a free Open Source Community. Share ideas and Communicate with other tech pioneers within a free open soucre communityy <i style="color: green;">Welcome In</i></p>
+        </div>
+        <div class="content-event">
+            <p>These are the events the community deals with, Explore now and do not forget to support me by <a href="#">Donating</a> to motivate me and help to keep the community alive</p>
+        </div>
+    </main>
+  <div class="gallery">
+    <div class="slide">
+      <img src="https://msftstories.thesourcemediaassets.com/2016/07/2016-Hackathon-028.jpg" alt="Hackathon team grinding">
+      <div class="caption">Hackathon collab</div>
+    </div>
+    <div class="slide">
+      <img src="https://media.wired.com/photos/5932e85652d99d6b984e0ae4/master/pass/hack1.jpg" alt="Big hackathon energy">
+      <div class="caption">Massive hack sesh</div>
+    </div>
+    <div class="slide">
+      <img src="https://www.cqt.sg/wp-content/uploads/mgrt/hl/qiskit-hackathon-singapore.jpg" alt="Quantum hackathon group">
+      <div class="caption">Quantum coders unite</div>
+    </div>
+    <div class="slide">
+      <img src="https://img.freepik.com/free-photo/team-developers-doing-brainstorming-optimizing-code_482257-112972.jpg?semt=ais_hybrid&w=740&q=80" alt="Team brainstorming code">
+      <div class="caption">Dev team brainstorm</div>
+    </div>
+    <div class="slide">
+      <img src="https://learn.uvm.edu/wp-content/uploads/2019/02/Hackathon.jpg" alt="Students & engineers at hack">
+      <div class="caption">Hackathon workspace</div>
+    </div>
+    <div class="slide">
+      <img src="https://source.colostate.edu/wp-content/uploads/2025/04/Hackathon.jpg" alt="Modern hackathon participants">
+      <div class="caption">University hack vibes</div>
+    </div>
+    <div class="slide">
+      <img src="https://media.wired.com/photos/5aac56eb491c2d69af42197d/3:2/w_2560%2Cc_limit/Hackathons-RTS12CJ0.jpg" alt="Intense coding focus">
+      <div class="caption">Late-night coding grind</div>
+    </div>
+    <div class="slide">
+      <img src="https://cdn.theatlantic.com/thumbor/10nh10zyeexXjDjAG_pzXVmQRsI=/0x33:3477x1989/1600x900/media/img/mt/2015/07/22_image/original.jpg" alt="Huge hackathon crowd">
+      <div class="caption">Epic hackathon floor</div>
+    </div>
+    <div class="slide">
+      <img src="https://plugins.jetbrains.com/files/12255/screenshot_4f64aab7-ed70-4fce-9ac6-49e9f8662788" alt="VS Code dark theme editor">
+      <div class="caption">Dark mode IDE beauty</div>
+    </div>
+    <div class="slide">
+      <img src="https://i.redd.it/lg51eqvtc6e71.png" alt="IntelliJ-style dark theme in VSCode">
+      <div class="caption">C++ dark coding</div>
+    </div>
+    <div class="slide">
+      <img src="https://user-images.githubusercontent.com/65825731/185721377-2df67475-9ff8-48dd-aeac-da0d3cb9e353.jpg" alt="JetBrains dark theme">
+      <div class="caption">Clean dark editor</div>
+    </div>
+    <div class="slide">
+      <img src="https://plugins.jetbrains.com/files/11938/screenshot_19494.png" alt="One Dark theme Java code">
+      <div class="caption">Spring Boot dark mode</div>
+    </div>
+    <div class="slide">
+      <img src="https://plugins.jetbrains.com/files/12692/screenshot_19962.png" alt="Darcula darker theme">
+      <div class="caption">Ultimate dark Darcula</div>
+    </div>
+    <div class="slide">
+      <img src="https://cdn.sanity.io/images/82wyjz97/production/1b163a8a62bceecdb26fd2b5f07fedfa8b00d3cb-6000x4000.webp" alt="Mobile app dev workspace">
+      <div class="caption">App dev in action</div>
+    </div>
+    <div class="slide">
+      <img src="https://plus.unsplash.com/premium_photo-1661423680953-eb72669d82d5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI0fHx8ZW58MHx8fHx8" alt="Team on laptops & phones">
+      <div class="caption">UI/UX mobile focus</div>
+    </div>
+    <div class="slide">
+      <img src="https://assets.nextwebi.com/assets/images/technologies/android-development-1.jpg" alt="Android app sketching">
+      <div class="caption">Wireframing apps</div>
+    </div>
+    <div class="slide">
+      <img src="https://cdn.4mation.com.au/app/uploads/2024/02/20162547/Mobile-app-development-1.png" alt="Mobile screens dev">
+      <div class="caption">iOS/Android team</div>
+    </div>
+    <div class="slide">
+      <img src="https://businesswebsoft.com/wp-content/uploads/2025/02/photo-1618761714954-0b8cd0026356.jpg" alt="Phone mockup coding">
+      <div class="caption">App prototyping</div>
+    </div>
+    <div class="slide">
+      <img src="https://storage.googleapis.com/nucamp-production.appspot.com/aiseo-blogs/coding-bootcamp-jacksonville-fl/coding-bootcamp-jacksonville-fl-top-10-mustattend-tech-meetups-and-conferences-in-jacksonville/thumbnail01.webp" alt="Tech meetup crowd">
+      <div class="caption">Big tech meetup</div>
+    </div>
+    <div class="slide">
+      <img src="https://cdn.prod.website-files.com/6593c9a7f9ab9dc8b1763db2/65b0566852bdf30e0a96201c_tech-events-meetups-hero-image.jpg" alt="Tech event presentation">
+      <div class="caption">Live tech talk</div>
+    </div>
+  </div>
+  <div class="start-button">
+    <a href="{{url_for('sign')}}"><button type="submit">Get Started</button></a>
+  </div>
+</body>
+</html>-->
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Community</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #fff; 
+      color: #000; 
+      font-weight: bold;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding: 20px;
+      width: 100%;
+      overflow-x: hidden; 
+    }
+    header, main, .gallery-container, .start-button {
+      background: #fff;
+      color: #000;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    h1, h2, p, a, i {
+      color: inherit; 
+    }
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: #0066ff;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #000;
+      text-decoration: none;
+    }
+    header.header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: slideDown 1s ease-out;
+    }
+    .header-h {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .header-h h1 {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+      animation: pulse 2s infinite;
+    }
+    .header-h i {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav li {
+      position: relative;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    nav li:hover {
+      transform: translateY(-5px);
+    }
+    nav li i {
+      display: block;
+      font-size: 0.8rem;
+      opacity: 0.6;
+      text-align: center;
+    }
+    main.content {
+      max-width: 1200px;
+      margin: 0 auto;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    .content-header h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+      animation: bounceIn 1s;
+    }
+    .content-phase p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      animation: fadeInLeft 1.5s ease;
+    }
+    .content-event p {
+      font-size: 1rem;
+      text-align: center;
+      animation: fadeInRight 1.5s ease;
+    }
+    .gallery-container {
+      position: relative;
+      overflow: hidden;
+      max-width: 1400px;
+      margin: 0 auto 40px;
+      padding: 0; 
+    }
+    .gallery {
+      display: flex;
+      width: calc(200% + 40px);
+      animation: slideLeft 40s linear infinite; 
+    }
+    .slide {
+      flex: 0 0 auto;
+      width: 300px; 
+      margin: 0 15px; 
+      background: #f9f9f9;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+      animation: zoomIn 1s ease-in-out;
+      border: 1px solid #fff;
+    }
+    .slide:hover {
+      transform: scale(1.15) rotate(2deg); 
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+    .slide img {
+      width: 100%;
+      height: 250px; 
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block; 
+    }
+    .slide:hover img {
+      transform: scale(1.05); 
+    }
+    .caption {
+      padding: 12px;
+      font-size: 1.05rem;
+      text-align: center;
+      font-weight: 600;
+      color: #333;
+      transition: color 0.3s;
+    }
+    .slide:hover .caption {
+      color: #000;
+    }
+    .gallery::before {
+      content: '';
+      display: flex;
+      width: 100%;
+      flex-shrink: 0;
+    }
+    .start-button {
+      display: flex;
+      justify-content: center;
+      animation: fadeInBottom 2s ease-in-out;
+    }
+    .start-button button {
+      width: 220px;
+      height: 50px;
+      background: #000;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+    }
+    .start-button a {
+      color: #fff;
+      text-decoration: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      60% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeInBottom {
+      from { opacity: 0; transform: translateY(100px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideLeft {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(-200%); }  
+    }
+    @media (max-width: 768px) {
+      .header-h h1 {
+        font-size: 2rem;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .slide {
+        width: 250px;
+        margin: 0 10px;
+      }
+      .slide img {
+        height: 200px;
+      }
+      .content-phase p {
+        font-size: 1rem;
+      }
+      .gallery {
+        width: calc(200% + 20px); 
+      }
+    }
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .slide {
+        width: 200px;
+        margin: 0 5px;
+      }
+      .slide img {
+        height: 150px;
+      }
+      .start-button button {
+        width: 180px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-h">
+      <h1>Tech Community</h1>
+      <i>Mona Inc</i>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="{{url_for('sign')}}">Get Started</a><i>~Sign Up</i></li>
+        <li><a href="{{url_for('log')}}">Welcome Back</a><i>~Log In</i></li>
+        <li><a href="{{url_for('log')}}">Donate</a><i>~Support me</i></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="content">
+    <div class="content-header">
+      <h2>Mona Tech</h2>
+    </div>
+    <div class="content-phase">
+      <p>Join the Community, able to get tech news, Updates, testing programs and even get them for free..This is a free Open Source Community. Share ideas and Communicate with other tech pioneers within a free open source community <i style="color: #00ff00;">Welcome In</i></p>
+    </div>
+    <div class="content-event">
+      <p>These are the events the community deals with, Explore now and do not forget to support me by <a href="#">Donating</a> to motivate me and help to keep the community alive</p>
+    </div>
+  </main>
+  <div class="gallery-container">
+    <div class="gallery">
+      <!-- Original slides -->
+      <div class="slide">
+        <img src="https://msftstories.thesourcemediaassets.com/2016/07/2016-Hackathon-028.jpg" alt="Hackathon team grinding">
+        <div class="caption">Hackathon collab</div>
+      </div>
+      <div class="slide">
+        <img src="https://media.wired.com/photos/5932e85652d99d6b984e0ae4/master/pass/hack1.jpg" alt="Big hackathon energy">
+        <div class="caption">Massive hack sesh</div>
+      </div>
+      <div class="slide">
+        <img src="https://www.cqt.sg/wp-content/uploads/mgrt/hl/qiskit-hackathon-singapore.jpg" alt="Quantum hackathon group">
+        <div class="caption">Quantum coders unite</div>
+      </div>
+      <div class="slide">
+        <img src="https://img.freepik.com/free-photo/team-developers-doing-brainstorming-optimizing-code_482257-112972.jpg?semt=ais_hybrid&w=740&q=80" alt="Team brainstorming code">
+        <div class="caption">Dev team brainstorm</div>
+      </div>
+      <div class="slide">
+        <img src="https://learn.uvm.edu/wp-content/uploads/2019/02/Hackathon.jpg" alt="Students & engineers at hack">
+        <div class="caption">Hackathon workspace</div>
+      </div>
+      <div class="slide">
+        <img src="https://source.colostate.edu/wp-content/uploads/2025/04/Hackathon.jpg" alt="Modern hackathon participants">
+        <div class="caption">University hack vibes</div>
+      </div>
+      <div class="slide">
+        <img src="https://media.wired.com/photos/5aac56eb491c2d69af42197d/3:2/w_2560%2Cc_limit/Hackathons-RTS12CJ0.jpg" alt="Intense coding focus">
+        <div class="caption">Late-night coding grind</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.theatlantic.com/thumbor/10nh10zyeexXjDjAG_pzXVmQRsI=/0x33:3477x1989/1600x900/media/img/mt/2015/07/22_image/original.jpg" alt="Huge hackathon crowd">
+        <div class="caption">Epic hackathon floor</div>
+      </div>
+      <div class="slide">
+        <img src="https://plugins.jetbrains.com/files/12255/screenshot_4f64aab7-ed70-4fce-9ac6-49e9f8662788" alt="VS Code dark theme editor">
+        <div class="caption">Dark mode IDE beauty</div>
+      </div>
+      <div class="slide">
+        <img src="https://i.redd.it/lg51eqvtc6e71.png" alt="IntelliJ-style dark theme in VSCode">
+        <div class="caption">C++ dark coding</div>
+      </div>
+      <div class="slide">
+        <img src="https://user-images.githubusercontent.com/65825731/185721377-2df67475-9ff8-48dd-aeac-da0d3cb9e353.jpg" alt="JetBrains dark theme">
+        <div class="caption">Clean dark editor</div>
+      </div>
+      <div class="slide">
+        <img src="https://plugins.jetbrains.com/files/11938/screenshot_19494.png" alt="One Dark theme Java code">
+        <div class="caption">Spring Boot dark mode</div>
+      </div>
+      <div class="slide">
+        <img src="https://plugins.jetbrains.com/files/12692/screenshot_19962.png" alt="Darcula darker theme">
+        <div class="caption">Ultimate dark Darcula</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.sanity.io/images/82wyjz97/production/1b163a8a62bceecdb26fd2b5f07fedfa8b00d3cb-6000x4000.webp" alt="Mobile app dev workspace">
+        <div class="caption">App dev in action</div>
+      </div>
+      <div class="slide">
+        <img src="https://plus.unsplash.com/premium_photo-1661423680953-eb72669d82d5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI0fHx8ZW58MHx8fHx8" alt="Team on laptops & phones">
+        <div class="caption">UI/UX mobile focus</div>
+      </div>
+      <div class="slide">
+        <img src="https://assets.nextwebi.com/assets/images/technologies/android-development-1.jpg" alt="Android app sketching">
+        <div class="caption">Wireframing apps</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.4mation.com.au/app/uploads/2024/02/20162547/Mobile-app-development-1.png" alt="Mobile screens dev">
+        <div class="caption">iOS/Android team</div>
+      </div>
+      <div class="slide">
+        <img src="https://businesswebsoft.com/wp-content/uploads/2025/02/photo-1618761714954-0b8cd0026356.jpg" alt="Phone mockup coding">
+        <div class="caption">App prototyping</div>
+      </div>
+      <div class="slide">
+        <img src="https://storage.googleapis.com/nucamp-production.appspot.com/aiseo-blogs/coding-bootcamp-jacksonville-fl/coding-bootcamp-jacksonville-fl-top-10-mustattend-tech-meetups-and-conferences-in-jacksonville/thumbnail01.webp" alt="Tech meetup crowd">
+        <div class="caption">Big tech meetup</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.prod.website-files.com/6593c9a7f9ab9dc8b1763db2/65b0566852bdf30e0a96201c_tech-events-meetups-hero-image.jpg" alt="Tech event presentation">
+        <div class="caption">Live tech talk</div>
+      </div>
+
+      <!-- Duplicate slides for infinite loop -->
+      <div class="slide">
+        <img src="https://msftstories.thesourcemediaassets.com/2016/07/2016-Hackathon-028.jpg" alt="Hackathon team grinding">
+        <div class="caption">Hackathon collab</div>
+      </div>
+      <div class="slide">
+        <img src="https://media.wired.com/photos/5932e85652d99d6b984e0ae4/master/pass/hack1.jpg" alt="Big hackathon energy">
+        <div class="caption">Massive hack sesh</div>
+      </div>
+      <div class="slide">
+        <img src="https://www.cqt.sg/wp-content/uploads/mgrt/hl/qiskit-hackathon-singapore.jpg" alt="Quantum hackathon group">
+        <div class="caption">Quantum coders unite</div>
+      </div>
+      <div class="slide">
+        <img src="https://img.freepik.com/free-photo/team-developers-doing-brainstorming-optimizing-code_482257-112972.jpg?semt=ais_hybrid&w=740&q=80" alt="Team brainstorming code">
+        <div class="caption">Dev team brainstorm</div>
+      </div>
+      <div class="slide">
+        <img src="https://learn.uvm.edu/wp-content/uploads/2019/02/Hackathon.jpg" alt="Students & engineers at hack">
+        <div class="caption">Hackathon workspace</div>
+      </div>
+      <div class="slide">
+        <img src="https://source.colostate.edu/wp-content/uploads/2025/04/Hackathon.jpg" alt="Modern hackathon participants">
+        <div class="caption">University hack vibes</div>
+      </div>
+      <div class="slide">
+        <img src="https://media.wired.com/photos/5aac56eb491c2d69af42197d/3:2/w_2560%2Cc_limit/Hackathons-RTS12CJ0.jpg" alt="Intense coding focus">
+        <div class="caption">Late-night coding grind</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.theatlantic.com/thumbor/10nh10zyeexXjDjAG_pzXVmQRsI=/0x33:3477x1989/1600x900/media/img/mt/2015/07/22_image/original.jpg" alt="Huge hackathon crowd">
+        <div class="caption">Epic hackathon floor</div>
+      </div>
+      <div class="slide">
+        <img src="https://plugins.jetbrains.com/files/12255/screenshot_4f64aab7-ed70-4fce-9ac6-49e9f8662788" alt="VS Code dark theme editor">
+        <div class="caption">Dark mode IDE beauty</div>
+      </div>
+      <div class="slide">
+        <img src="https://i.redd.it/lg51eqvtc6e71.png" alt="IntelliJ-style dark theme in VSCode">
+        <div class="caption">C++ dark coding</div>
+      </div>
+      <div class="slide">
+        <img src="https://user-images.githubusercontent.com/65825731/185721377-2df67475-9ff8-48dd-aeac-da0d3cb9e353.jpg" alt="JetBrains dark theme">
+        <div class="caption">Clean dark editor</div>
+      </div>
+      <div class="slide">
+        <img src="https://plugins.jetbrains.com/files/11938/screenshot_19494.png" alt="One Dark theme Java code">
+        <div class="caption">Spring Boot dark mode</div>
+      </div>
+      <div class="slide">
+        <img src="https://plugins.jetbrains.com/files/12692/screenshot_19962.png" alt="Darcula darker theme">
+        <div class="caption">Ultimate dark Darcula</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.sanity.io/images/82wyjz97/production/1b163a8a62bceecdb26fd2b5f07fedfa8b00d3cb-6000x4000.webp" alt="Mobile app dev workspace">
+        <div class="caption">App dev in action</div>
+      </div>
+      <div class="slide">
+        <img src="https://plus.unsplash.com/premium_photo-1661423680953-eb72669d82d5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI0fHx8ZW58MHx8fHx8" alt="Team on laptops & phones">
+        <div class="caption">UI/UX mobile focus</div>
+      </div>
+      <div class="slide">
+        <img src="https://assets.nextwebi.com/assets/images/technologies/android-development-1.jpg" alt="Android app sketching">
+        <div class="caption">Wireframing apps</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.4mation.com.au/app/uploads/2024/02/20162547/Mobile-app-development-1.png" alt="Mobile screens dev">
+        <div class="caption">iOS/Android team</div>
+      </div>
+      <div class="slide">
+        <img src="https://businesswebsoft.com/wp-content/uploads/2025/02/photo-1618761714954-0b8cd0026356.jpg" alt="Phone mockup coding">
+        <div class="caption">App prototyping</div>
+      </div>
+      <div class="slide">
+        <img src="https://storage.googleapis.com/nucamp-production.appspot.com/aiseo-blogs/coding-bootcamp-jacksonville-fl/coding-bootcamp-jacksonville-fl-top-10-mustattend-tech-meetups-and-conferences-in-jacksonville/thumbnail01.webp" alt="Tech meetup crowd">
+        <div class="caption">Big tech meetup</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.prod.website-files.com/6593c9a7f9ab9dc8b1763db2/65b0566852bdf30e0a96201c_tech-events-meetups-hero-image.jpg" alt="Tech event presentation">
+        <div class="caption">Live tech talk</div>
+      </div>
+    </div>
+  </div>
+  <div class="start-button">
+    <button><a href="{{url_for('sign')}}">Get Started</a></button>
+  </div>
+</body>
+</html>

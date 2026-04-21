@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Community</title>
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
+    <style>
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: #ccc; 
+            margin: 0; 
+            padding: 0; 
+            color: #333; }
+        .header { 
+            position: relative;
+            background: #fff; 
+            color: #4f46e5; 
+            padding: 1rem;
+            text-align: center;
+        }
+        .head h2 { 
+            margin: 0; 
+        }
+        .welcome { 
+            font-weight: bold;
+            font-size: 1.1rem; 
+            margin: 0.5rem 0; 
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #000;
+            z-index: 1001;
+        }
+        .taskbar {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            min-width: 220px;
+            z-index: 1000;
+        }
+        .taskbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .taskbar li {
+            margin: 0.8rem 0;
+        }
+        .taskbar a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .taskbar a:hover {
+            color: #4f46e5;
+        }
+        .taskbar.active {
+            display: block;
+        }
+        .flash-messages {
+            max-width: 800px;
+            margin: 1rem auto;
+            text-align: center;
+        }
+        .flash {
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+        }
+        .flash-success { background: #d4edda; color: #155724; }
+        .flash-error   { background: #f8d7da; color: #721c24; }
+        main.main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="head">
+            <h2>Tech Community</h2>
+            {% if current_user %}
+                <p class="welcome">Welcome, {{ current_user.full_name }}!</p>
+            {% endif %}
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
+        <nav class="taskbar" id="navMenu">
+            <ul>
+                <li><a href="{{ url_for('home') }}"><img src="https://img.icons8.com/?size=80&id=mYo7btkRTGNJ&format=png" width="30" height="30"> Home</a></li>
+                <li><a href="{{ url_for('news') }}"><img src="https://img.icons8.com/?size=50&id=35635&format=png" width="30" height="30"> Feeds</a></li>
+                <li><a href="{{ url_for('members') }}"><img src="https://img.icons8.com/?size=50&id=11220&format=png" width="30" height="30"> Members</a></li>
+                <li><a href="{{ url_for('faqs') }}"><img src="https://img.icons8.com/?size=50&id=7775&format=png" width="30" height="30"> FAQs</a></li>
+                <li><a href="{{ url_for('privacy') }}"><img src="https://img.icons8.com/?size=50&id=10576&format=png" width="30" height="30"> Privacy & Terms of use</a></li>
+                <li><a href="{{ url_for('donate') }}"><img src="https://img.icons8.com/?size=50&id=8289&format=png" width="30" height="30"> Donate</a></li>
+                <li><a href="{{ url_for('reel') }}"><img src="https://cdn-icons-png.flaticon.com/128/12595/12595820.png" width="30" height="30"> Reels</a></li>
+                <li><a href="{{ url_for('photo') }}"><img src="https://cdn-icons-png.flaticon.com/128/17653/17653301.png" width="30" height="30"> Mona AI</a></li>
+                <li><a href="{{ url_for('profile') }}"><img src="https://cdn-icons-png.flaticon.com/128/6932/6932488.png" width="30" height="30"> Profile</a></li>
+                {% if current_user %}
+                    <li><a href="{{ url_for('logout') }}" style="color: red;"><img src="https://img.icons8.com/?size=80&id=w48RpVqAw0pe&format=png" width="30" height="30"> Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('log') }}"><img src="https://img.icons8.com/?size=80&id=UgXigNVWQFy3&format=png" width="35" height="35"> Login</a></li>
+                    <li><a href="{{ url_for('sign') }}"><img src="https://img.icons8.com/?size=64&id=8Ry8ErGqa1va&format=png" width="35" height="38"> Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% if request.path == url_for('home') %}
+    <footer class="footer">
+        <p>&copy; 2026 Tech Community | Mona Inc | Built by Abbakar(clipp_er43,IG)</p>
+    </footer>
+    {% endif %}
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

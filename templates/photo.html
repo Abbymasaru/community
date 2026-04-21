@@ -1,0 +1,623 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>Tech Community - News</title>
+<style>
+* { 
+    box-sizing: border-box; 
+}
+body{
+    font-family: 'Segoe UI',sans-serif;
+    background: #f8f9fa;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    text-spacing-trim: normal;
+}
+@media (min-width: 768px) {
+    body {
+        font-size: 1rem;
+        width: 68%;
+        }
+    }
+@media (min-width: 414px) {
+    body {
+        font-size: 1rem;
+        width: 60%;
+        }
+    }
+@media (min-width: 374px) {
+    body {
+        font-size: 0.8rem;
+        width: 40%;
+        }
+    }
+@media (min-width: 360px) {
+    body {
+        font-size: 0.8rem;
+        width: 50%;
+        }
+    }
+@media (min-width: 344px) {
+    body {
+        font-size: 0.8rem;
+        width: 100%;
+        }
+    }
+@media (min-width: 1024px) {
+    body {
+        font-size: 1.5rem;
+        width: 100%;
+        }
+    }
+@media (min-width: 1440px) {
+    body {
+        font-size: 1.5rem;
+        width: 100%;
+        }
+    }
+h1 {
+    text-align:center;
+}
+
+/* Add post button */
+.add-news{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+}
+.show-form button{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 15px;
+    border: 2px solid #4f46e5;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-radius:8px;
+    background: #fff;
+    font-weight: bold;
+    color: #4f46e5;
+    cursor:pointer;
+}
+
+/* Popup Form */
+.news-form{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #ccc;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.form-header h3{
+    text-align:center;
+}
+
+.news-form input,
+.news-form textarea{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    font-weight: bold;
+    border: 1px solid #4f46e5;
+    background: #fff;
+}
+.post-button{
+    display:flex;
+    justify-content:center;
+}
+.post-button button{
+    width:120px;
+    height:35px;
+    border: none;
+    border-radius: 5px;
+    background: #4f46e5;
+    font-weight: bold;
+    color:white;
+    cursor:pointer;
+}
+/* News list */
+.news-list {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+}
+.news-card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+.news-card .post-desc {
+    height: 200px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 10px;
+    overflow-y: scroll;
+}
+.news-card img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+.votes{
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    margin-top:10px;
+}
+.votes a{
+    text-decoration:none;
+    color:black;
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+.votes a img {
+    width: 30px;
+    height: 30px;
+}
+/* NEW COMMENT STYLES */
+.comments-section {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    display: none;
+}
+.comment {
+    background: white;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 5px solid #4f46e5;
+    text-overflow: scroll;
+}
+.comment-list {
+    height: 200px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+.comment strong { 
+    color: #4f46e5; 
+}
+.comment small { 
+    color: #666; 
+    font-size: 0.85rem; 
+}
+.comment-form textarea {
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    resize: vertical;
+}
+.comment-form button {
+    background: #4f46e5; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    cursor: pointer;
+}
+.comment-btn {
+    background: #4f46e5; 
+    border: 1px solid #ccc; 
+    padding: 8px 16px; 
+    border-radius: 20px; 
+    cursor: pointer;
+    display: flex; 
+    align-items: center; 
+    gap: 6px;
+}
+.comment-btn:hover { 
+    background: #4f46e5; 
+    color: #fff;
+    }
+</style>
+</head>
+<body>
+{% extends "base.html" %}
+{% block title %}News - Tech Community{% endblock %}
+{% block content %}
+<h1>Community Updates & Tech News</h1>
+
+<div class="add-news">
+
+<div class="show-form">
+<button id="addPostBtn">
+<img src="https://img.icons8.com/?size=50&id=38113&format=png" width="25">
+Add Post
+</button>
+</div>
+
+<form method="POST" class="news-form">
+<div class="form-header">
+<h3>Add New Post</h3>
+</div>
+
+<input type="text" name="heading" placeholder="Heading" required><br><br>
+
+<input type="url" name="image_url" placeholder="Image URL (optional)"><br><br>
+
+<textarea name="description" placeholder="Description" rows="5" required></textarea><br><br>
+
+<div class="post-button">
+<button type="submit">Post</button>
+</div>
+
+</form>
+
+</div>
+
+<div class="news-list">
+{% for post in news_list %}
+<div class="news-card">
+    <h3>{{ post.heading }}</h3>
+    {% if post.image_url %}<img src="{{ post.image_url }}">{% endif %}
+    <div class="post-desc">
+        <p>{{ post.description }}</p>
+    </div>
+    <small>By {{ post.author }} | {{ post.created_at }}</small>
+
+    <div class="votes" data-news-id="{{ post.id }}">
+    <a href="{{ url_for('like', news_id=post.id, action='like') }}" 
+       class="vote-btn" 
+       data-action="like">
+        <img src="https://images.icon-icons.com/2806/PNG/96/like_thumbs_up_icon_178899.png" 
+             width="25" alt="Like">
+        <span class="like-count">{{ post.likes }}</span>
+    </a>
+
+    <a href="{{ url_for('like', news_id=post.id, action='dislike') }}" 
+       class="vote-btn" 
+       data-action="dislike">
+        <img src="https://images.icon-icons.com/2806/PNG/96/dislike_emo_emoji_emoticon_icon_178902.png" 
+             width="25" alt="Dislike">
+        <span class="dislike-count">{{ post.dislikes }}</span>
+    </a>
+</div>
+
+
+    <button class="comment-btn" onclick="toggleComments('{{ post.id }}')">
+        💬 {{ comments_dict[post.id]|length }} 
+    </button>
+
+
+    <div id="comments-section-{{ post.id }}" class="comments-section">
+        <div class="comment-list">
+            {% for comment in comments_dict.get(post.id, []) %}
+            <div class="comment">
+                <strong>{{ comment.author }}</strong> 
+                <small>{{ comment.created_at }}</small>
+                <p>{{ comment.comment_text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="comment-form">
+            <textarea id="comment-text-{{ post.id }}" placeholder="Write a comment..." rows="3"></textarea>
+            <button onclick="submitComment('{{ post.id }}')">Post Comment</button>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+<script src="static/script.js"></script>
+{% endblock %}
+</body>
+</html>-->
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>Tech Community - Reels</title>
+<style>
+* { 
+    box-sizing: border-box; 
+}
+body{
+    font-family: 'Segoe UI',sans-serif;
+    background: #f8f9fa;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+@media (min-width: 768px) { body { font-size: 1rem; width: 68%; } }
+@media (min-width: 414px) { body { font-size: 1rem; width: 60%; } }
+@media (min-width: 374px) { body { font-size: 0.8rem; width: 40%; } }
+@media (min-width: 360px) { body { font-size: 0.8rem; width: 50%; } }
+@media (min-width: 344px) { body { font-size: 0.8rem; width: 100%; } }
+@media (min-width: 1024px) { body { font-size: 1.5rem; width: 100%; } }
+@media (min-width: 1440px) { body { font-size: 1.5rem; width: 100%; } }
+h1 { text-align:center; }
+
+/* Add reel button */
+.add-reel{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+}
+.show-form button{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 15px;
+    border: 2px solid #4f46e5;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-radius:8px;
+    background: #fff;
+    font-weight: bold;
+    color: #4f46e5;
+    cursor:pointer;
+}
+
+/* Popup Form */
+.reel-form{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #ccc;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.form-header h3{
+    text-align:center;
+}
+
+.reel-form input,
+.reel-form textarea{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    font-weight: bold;
+    border: 1px solid #4f46e5;
+    background: #fff;
+}
+.post-button{
+    display:flex;
+    justify-content:center;
+}
+.post-button button{
+    width:120px;
+    height:35px;
+    border: none;
+    border-radius: 5px;
+    background: #4f46e5;
+    font-weight: bold;
+    color:white;
+    cursor:pointer;
+}
+
+/* Reels list */
+.reels-list {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+}
+.reel-card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+.reel-card video {
+    width: 100%;
+    height: 350px;
+    max-height: 500px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.reel-card .caption {
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+</style>
+</head>
+<body>
+{% extends "base.html" %}
+{% block title %}Reels - Tech Community{% endblock %}
+{% block content %}
+<h1>Community Reels</h1>
+
+<div class="add-reel">
+    <div class="show-form">
+        <button id="addReelBtn">
+            <img src="https://img.icons8.com/?size=50&id=38113&format=png" width="25">
+            Add Reel
+        </button>
+    </div>
+
+    <form method="POST" class="reel-form" id="reelForm">
+        <div class="form-header">
+            <h3>Add New Reel</h3>
+        </div>
+        <input type="url" name="video_url" placeholder="Video URL (direct mp4 link or embed)" required><br><br>
+        <textarea name="caption" placeholder="Caption for your reel" rows="4" required></textarea><br><br>
+        <div class="post-button">
+            <button type="submit">Post Reel</button>
+        </div>
+    </form>
+</div>
+
+<div class="reels-list">
+    {% for reel in reels_list %}
+    <div class="reel-card">
+        <video controls>
+            <source src="{{ reel.video_url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="caption">
+            <p>{{ reel.caption }}</p>
+        </div>
+        <small>By {{ reel.author }} | {{ reel.created_at }}</small>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+// Simple JS to show/hide reel form (same pattern as news.html)
+document.getElementById('addReelBtn').addEventListener('click', function() {
+    const form = document.querySelector('.reel-form');
+    form.style.display = form.style.display === 'block' ? 'none' : 'block';
+});
+</script>
+{% endblock %}
+</body>
+</html>-->
+
+<!--<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <meta name="Author" content="Abubakari.mohamed.msaru"/>
+        <link rel="stylesheet" href="static/style.css">
+        <link href="/favico.icon" rel="icon" type="icon/image-x"/>
+        <title>Tech Community</title>
+        <style>
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                width: 100%;
+                padding: 0;
+            }
+            .container  {
+                width: 99%;
+                padding: 10px;
+            }
+            .intro {
+                color: #000;
+            }
+            .intro p {
+                font-weight: bold;
+            }
+             .news {
+                padding: 5px;
+                width: 100%;
+                height: auto;
+                color: #000;
+                background: #fff;
+                border: 1px solid #fff;
+                box-shadow: 0 2px 4px 6px rgba(0,0,0,0.2);
+                border-radius: 10px;
+            }
+            .news .card {
+                margin: 0 auto;
+                padding: 10px;
+                width: 100%;
+                height: auto;
+                border: 1px solid #fff;
+                border-radius: 10px;
+                font-weight: bold;
+                box-shadow: 0 2px 4px 6px rgba(0,0,0,0.2);
+            }
+            .news .card img {
+                width: 100%;
+                height: auto;
+                border-top-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+            }
+            .news .see {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .news .see button  {
+                width: 120px;
+                height: 30px;
+                border: none;
+                border-radius: 5px;
+                background: #4f46e5;
+                font-weight: bold;
+            }
+            .news .see button a, .all button a {
+                color: #fff;
+                text-decoration: none;
+            }
+            .news .all {
+                margin-top: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .news .all button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 200px;
+                height: 30px;
+                border: none;
+                font-weight: bold;
+                border-radius: 10px;
+                background: #4f46e5;
+            }
+        </style>
+    </head>
+    <body>
+    {% extends "base.html" %}
+
+    {% block title %}Home{% endblock %}
+
+    {% block content %}
+    <div class="container">
+    <section class="intro">
+        <h1>Welcome to Tech Community</h1>
+        <p>Join the Community! Get tech news, updates, testing programs, and even get them for free. This is a free Open Source Community. Share ideas and communicate with other tech pioneers.</p>
+        <p><strong>Welcome In!</strong></p>
+    </section>
+
+    <section class="news">
+        <h2>Recent Updates & Tech News</h2>
+        {% if recent_news %}
+            {% for post in recent_news %}
+                <div class="card">
+                    <h3>{{ post.heading }}</h3>
+                    {% if post.image_url %}
+                       <img src="{{ post.image_url }}" alt="News image" style="max-width:100%; height:auto;">
+                    {% endif %}
+                    <p>{{ post.description[:200] }}...</p>
+                    <small>By {{ post.author }} | {{ post.created_at }}</small>
+                    <div class="see">
+                        <button>
+                            <a href="{{ url_for('news_detail', news_id=post.id) }}">See More →</a>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No recent news yet. Be the first to share!</p>
+        {% endif %}
+      <div class="all">
+          <button><a href="{{ url_for('news') }}">View All News & Add Yours</a></button>
+    </section>
+      </div>
+    </div>
+    {% endblock %}
+    </body>
+</html>-->

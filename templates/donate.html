@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <title>Tech Communtiy</title>
+        <style>
+        .donate-page { 
+            max-width: 900px; 
+            margin: 30px auto; 
+            padding: 20px; 
+            font-family: 'Segoe UI', sans-serif; 
+        }
+        .hero { 
+            background: #4f46e5; 
+            color: white; 
+            text-align: center; 
+            padding: 50px 20px; 
+            border-radius: 20px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 2px 4px 6px rgba(0,0,0,0.2); 
+        }
+        .hero h1 { 
+            font-size: 2.8rem; 
+            margin: 0 0 15px; 
+        }
+        .amount-buttons { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 12px; 
+            justify-content: center; 
+            margin: 25px 0; 
+        }
+        .amount-btn { 
+            padding: 14px 24px; 
+            border: 3px solid #ddd; 
+            border-radius: 10px; 
+            background: #fff; 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+        }
+        .amount-btn.active { 
+            background: #4f46e5; 
+            color: white; 
+            transform: scale(1.08); 
+        }
+        .custom-amount { 
+            text-align: center; 
+            margin: 20px 0;
+            font-weight: bold; 
+        }
+        .custom-amount input {
+            width: 220px; 
+            padding: 12px; 
+            font-size: 1.3rem; 
+            text-align: center; 
+            border: 2px solid #4f46e5; 
+            border-radius: 10px; 
+        }
+        .payment-options { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            margin: 30px 0; 
+        }
+        .payment-btn { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            padding: 18px; 
+            background: white; 
+            border: 2px solid #ddd; 
+            border-radius: 12px; 
+            font-size: 1.3rem; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        .payment-btn:hover { 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+            transform: translateY(-3px); 
+        }
+        .paypal { 
+            border-color: #003087;
+            text-decoration: none; 
+        }
+        .paypal img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+        .paypal span {
+            font-weight: bold;
+        }
+        .mpesa {
+            border-color: #e00;
+        }
+        .mpesa img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+        .big-donate-btn { 
+            width: 100%; 
+            background: #4f46e5; 
+            color: white; 
+            padding: 20px; 
+            font-size: 1.6rem; 
+            font-weight: bold; 
+            border: none; 
+            border-radius: 10px; 
+            margin: 0 auto; 
+            cursor: pointer; }
+        .why-donate { 
+            background: #f8f9fa; 
+            padding: 30px; 
+            border-radius: 15px; 
+            margin: 30px 0; 
+        }
+        .why-donate ul li {
+            font-weight: bold;
+        }
+        .why-donate h2 , 
+        .why-donate p {
+            color: #4f46e5;
+            font-weight: bold;
+        }
+        .modal { 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.8); 
+            display: none; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000;
+            font-weight: bold;
+        }
+        .modal-content { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            max-width: 420px; 
+            text-align: center; 
+            box-shadow: 0 2px 4px 6px rgba(0,0,0,0.2); 
+        }
+        .phone { 
+            font-size: 1.8rem; 
+            color: #4f46e5; 
+            margin: 15px 0; 
+        }
+        .close-btn { 
+            background: #4f46e5; 
+            color: white; 
+            padding: 12px 30px; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 1.1rem; 
+        }
+        .media-link {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 25px 0;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .media-link .media button {
+            width: 100px;
+            height: 50px;
+            border: 2px solid #4f46e5;
+            border-radius: 10px;
+        }
+        .media-link .media button img {
+            width: 30px;
+            height: 30px;
+        }
+    </style> 
+    </head>
+    <body>
+{% extends "base.html" %}
+{% block title %}Donate - Tech Community{% endblock %}
+
+{% block content %}
+<div class="donate-page">
+    <!-- Hero -->
+    <div class="hero">
+        <h1>Support the Tech Community</h1>
+        <p>Every Tanzanian Shilling helps us run meetups, publish news, and grow the developer ecosystem.</p>
+        <div class="impact">
+            <strong>Total Raised This Month: TZS 2,450,000</strong>
+            <!-- Later we can make this dynamic from database -->
+        </div>
+    </div>
+
+    <div class="donate">
+        <h2>Choose How Much You Want to Give</h2>
+
+        <!-- Amount buttons -->
+        <div class="amount-buttons">
+            <button class="amount-btn active" data-amount="5000">TZS 5,000</button>
+            <button class="amount-btn" data-amount="10000">TZS 10,000</button>
+            <button class="amount-btn" data-amount="20000">TZS 20,000</button>
+            <button class="amount-btn" data-amount="50000">TZS 50,000</button>
+            <button class="amount-btn" data-amount="100000">TZS 100,000</button>
+        </div>
+
+        <!-- Custom amount -->
+        <div class="custom-amount">
+            <label>Custom Amount (TZS)</label>
+            <input type="number" id="custom-amount" value="10000" min="1000">
+        </div>
+
+        <h3>Choose Payment Method</h3>
+        <div class="payment-options">
+            <!-- PayPal - REAL TIME PAYMENT -->
+            <a id="paypal-btn" href="https://www.paypal.me/YOURPAYPALUSERNAME" target="_blank" class="payment-btn paypal">
+                <img src="https://images.seeklogo.com/logo-png/46/2/paypal-logo-png_seeklogo-465780.png" alt="PayPal">
+                <span>Pay with PayPal <small>(Instant • Secure • International)</small></span>
+            </a>
+
+            <!-- M-Pesa -->
+            <button onclick="showMpesaModal()" class="payment-btn mpesa">
+                <img src="https://images.seeklogo.com/logo-png/44/1/m-pesa-logo-png_seeklogo-442995.png" alt="M-Pesa">
+                <span>Pay with M-Pesa - Click to get a number.</span>
+            </button>
+        </div>
+
+        <button id="donate-confirm-btn" class="big-donate-btn">
+            DONATE NOW - TZS <span id="selected-amount">10,000</span>
+        </button>
+    </div>
+
+    <!-- Why donate -->
+    <div class="why-donate">
+        <h2>Your Donation Makes a Difference</h2>
+        <ul>
+            <li>Host free monthly tech events in Dar es Salaam</li>
+            <li>Publish more local developer news &amp; tutorials</li>
+            <li>Keep the platform completely free &amp; ad-free</li>
+            <li>Support Tanzanian students &amp; startups</li>
+        </ul>
+        <p class="secure"><span></span> Secure • Transparent • Tax-deductible (if applicable)</p>
+    </div>
+
+    <!-- Your original social media section (unchanged) -->
+    <div class="social-media">
+        <h2>Follow Us!</h2>
+        <div class="media-link">
+            <div class="media">
+                <button><a href="https://www.tiktok.com/@clipp_er43"><img src="https://images.icon-icons.com/3186/PNG/96/tiktok_icon_194155.png"></a></button>
+            </div>
+            <div class="media">
+                <button><a href="https://www.youtube.com/@clipp_er43"><img src="https://images.icon-icons.com/2699/PNG/96/youtube_logo_icon_168737.png"></a></button>
+            </div>
+            <div class="media">
+                <button><a href="https://www.instagram.com/@clipp_er43"><img src="https://images.icon-icons.com/3658/PNG/96/media_social_instagram_icon_228428.png"></a></button>
+            </div>
+            <div class="media">
+                <button><a href="https://www.facebook.com/clipper43"><img src="https://images.icon-icons.com/2429/PNG/96/facebook_logo_icon_147291.png"></a></button>
+            </div>
+            <div class="media">
+                <button><a href="https://www.threads.com/@clipp_er43"><img src="https://images.icon-icons.com/4000/PNG/96/threads_logo_threads_circle_black_background_icon_255051.png"></a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- M-Pesa Modal -->
+<div id="mpesa-modal" class="modal">
+    <div class="modal-content">
+        <h3>M-Pesa / Mobile Money Donation</h3>
+        <p>Send exactly <strong id="modal-amount-display"></strong> to:</p>
+        <p class="phone"><strong>+255 797 880 481</strong></p>
+        <p>After sending, forward the M-Pesa confirmation SMS to the same WhatsApp number.</p>
+        <p>We will confirm your donation within minutes!</p>
+        <button onclick="hideMpesaModal()" class="close-btn">Close</button>
+    </div>
+</div>
+
+<script>
+    let selectedAmount = 10000;
+
+    // Amount button logic
+    document.querySelectorAll('.amount-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedAmount = parseInt(btn.dataset.amount);
+            document.getElementById('custom-amount').value = selectedAmount;
+            updateDonateButton();
+        });
+    });
+
+    // Custom amount sync
+    document.getElementById('custom-amount').addEventListener('input', () => {
+        selectedAmount = parseInt(document.getElementById('custom-amount').value) || 10000;
+        updateDonateButton();
+    });
+
+    function updateDonateButton() {
+        document.getElementById('selected-amount').textContent = selectedAmount.toLocaleString();
+    }
+
+    // Donate button → opens PayPal with correct amount
+    document.getElementById('donate-confirm-btn').addEventListener('click', () => {
+        const paypalLink = document.getElementById('paypal-btn');
+        // ←←← CHANGE THIS TO YOUR REAL PAYPAL.ME USERNAME
+        paypalLink.href = `https://www.paypal.me/YOURPAYPALUSERNAME/${selectedAmount}`;
+        
+        // Open PayPal in new tab (real-time payment)
+        window.open(paypalLink.href, '_blank');
+        
+        // Optional success message
+        setTimeout(() => {
+            alert(`✅ Thank you! You are now donating TZS ${selectedAmount} via PayPal.\n\nYour support means a lot to the community!`);
+        }, 800);
+    });
+
+    // M-Pesa modal
+    function showMpesaModal() {
+        document.getElementById('modal-amount-display').textContent = `TZS ${selectedAmount.toLocaleString()}`;
+        document.getElementById('mpesa-modal').style.display = 'flex';
+    }
+    function hideMpesaModal() {
+        document.getElementById('mpesa-modal').style.display = 'none';
+    }
+</script>
+{% endblock %}
+    </body>
+</html>

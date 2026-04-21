@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width,initila-scale=1.0"/>
+        <title>Tech Community</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                color: #000;
+            }
+
+            .news-detail {
+                border: 2px solid #fff;
+                background: #fff;
+                border-radius: 10px;
+                padding: 10px;
+                width: 70%;
+                height: auto;
+                margin: 0 auto;
+                box-shadow: 0 2px 4px 6px rgba(0,0,0,0.2);
+            }
+            .news-detail .img {
+                width: 100%;
+                height: 300px;
+            }
+            .news-detail p {
+                color: #000;
+                font-weight: bold;
+            }
+            .news-detail small {
+                font-weight: bold;
+                color: #4f46e5;
+            }
+            .votes {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 100px;
+            }
+            .votes a {
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .btn {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .back-btn {
+                background: #4f46e5;
+                border: none;
+                width: 133px;
+                height: 30px;
+                border-radius: 5px;
+            }
+            .back-btn1 {
+                background: #4f46e5;
+                border: none;
+                width: 200px;
+                height: 30px;
+                border-radius: 5px;
+            }
+            .back-btn a,
+            .back-btn1 a {
+                text-decoration: none;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+{% extends "base.html" %}   <!-- if you have a base.html, keep this line. If not, remove it -->
+
+{% block content %}
+<div class="news-detail">
+    <h1>{{ post.heading }}</h1>
+    
+    {% if post.image_url %}
+        <img class="img" src="{{ post.image_url }}" alt="News image" style="max-width:100%; height:auto;">
+    {% endif %}
+    
+    <p>{{ post.description }}</p>   <!-- full description, no slicing -->
+    
+    <small>Time {{ post.created_at }}</small>
+
+    <!-- Voting buttons (using the AJAX version we fixed last time - no page reload) -->
+    <div class="votes" data-news-id="{{ post.id }}">
+        <a href="#" class="vote-btn" data-action="like">
+            <img src="https://images.icon-icons.com/2806/PNG/96/like_thumbs_up_icon_178899.png" width="25" alt="Like">
+            <span class="like-count">{{ likes }}</span>
+        </a>
+
+        <a href="#" class="vote-btn" data-action="dislike">
+            <img src="https://images.icon-icons.com/2806/PNG/96/dislike_emo_emoji_emoticon_icon_178902.png" width="25" alt="Dislike">
+            <span class="dislike-count">{{ dislikes }}</span>
+        </a>
+    </div>
+
+   <br>
+   <div class="btn">
+        <button class="back-btn"><a href="{{ url_for('news') }}">← Back to All News</a></button>
+        <button class="back-btn1"><a href="{{ url_for('feedback_page') }}">Submit Codes as Feedback</a></button>
+   </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.vote-btn').forEach(btn => {
+        btn.addEventListener('click', async function(e) {
+            e.preventDefault();
+
+            const votesDiv = this.closest('.votes');
+            const newsId   = votesDiv.dataset.newsId;
+            const action   = this.dataset.action;
+
+            try {
+                const response = await fetch(`/like/${newsId}/${action}`);
+                const data = await response.json();
+
+                if (!data.success) {
+                    alert(data.message || "Something went wrong");
+                    return;
+                }
+
+                votesDiv.querySelector('.like-count').textContent = data.likes;
+                votesDiv.querySelector('.dislike-count').textContent = data.dislikes;
+
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => this.style.transform = 'scale(1)', 200);
+            } catch (err) {
+                alert("Error connecting to server");
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+    </body>
+</html>

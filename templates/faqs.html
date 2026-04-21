@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ - [Your Platform Name] Tech Community</title>
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --text: #111827;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --accent: #4f46e5;
+      --accent-dark: #4338ca;
+      --muted: #6b7280;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --text: #e2e8f0;
+        --card: #1e293b;
+        --border: #334155;
+        --accent: #6366f1;
+        --accent-dark: #818cf8;
+        --muted: #94a3b8;
+      }
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #fff;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .heda {
+      background: #000;
+      color: #fff;
+      border-radius: 10px;
+      text-align: center;
+      padding: 5rem 1rem 3.5rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+    .heda h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 800;
+    }
+    .heda p {
+      margin: 1rem 0 0;
+      font-size: 1.3rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    main {
+      max-width: 900px;
+      margin: -3rem auto 4rem;
+      padding: 0 1.2rem;
+    }
+    .container {
+      background: #fff;
+      border-radius: 10px;
+      color: #000;
+      overflow: hidden;
+      border: 1px solid #fff;
+      box-shadow: 0 2px 4px 6px  rgba(0,0,0,0.2);
+    }
+    .intro {
+      padding: 2.5rem 2rem 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid var(--border);
+    }
+    .intro h2 {
+      margin: 0 0 1rem;
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+    details.faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    details.faq-item:last-child {
+      border-bottom: none;
+    }
+    summary {
+      padding: 1.4rem 2rem;
+      font-size: 1.22rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s ease;
+      list-style: none;
+    }
+    summary:hover {
+      background: #fff;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary::after {
+      content: '▼';
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+      color: var(--muted);
+    }
+    details[open] summary::after {
+      transform: rotate(180deg);
+    }
+    details[open] summary {
+      background: rgba(79, 70, 229, 0.1);
+      color: var(--accent-dark);
+    }
+    .answer {
+      padding: 0 2rem 1.8rem;
+      font-size: 1.05rem;
+      color: #000;
+      font-weight: 600;
+    }
+    .answer p {
+      margin: 1rem 0;
+    }
+    .answer a {
+      color: red;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .answer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+      {% extends "base.html" %}
+      {% block title %}Faqs - Tech Community{% endblock %}
+      {% block content %}
+      <br><br>
+  <main>
+      <header class="heda">
+          <h1>Frequently Asked Questions</h1>
+          <p>Quick answers to the most common questions about [Your Platform Name] — your friendly tech community for coding, design, learning & building together!</p>
+      </header>
+
+    <div class="container">
+      <div class="intro">
+        <h2>Got questions? We've got answers!</h2>
+        <p>Can't find what you're looking for? Contact us at <a href="mailto:abbymsaru@gmail.com">abbymsaru@gmail.com</a></p>
+      </div>
+
+      <!-- General -->
+      <details class="faq-item">
+        <summary>What is [Your Platform Name]?</summary>
+        <div class="answer">
+          <p>We are a welcoming online community for people who love technology — beginners, students, hobbyists, professional developers, designers, and everyone in between. Share projects, ask questions, learn new skills, join discussions, participate in challenges, and connect with others who are passionate about coding, web design, AI, mobile apps, and more.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Who can join the community?</summary>
+        <div class="answer">
+          <p>Everyone is welcome — children, teens, adults, teachers, parents — no age limit! We keep the space safe and friendly with active moderation. Parents/guardians: we recommend supervising younger members and discussing safe online sharing with them.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is the platform free to use?</summary>
+        <div class="answer">
+          <p>Yes — core features (posting, commenting, joining discussions, sharing code/projects, reading content) are completely free. In the future we might add optional premium features (e.g. advanced badges, private groups), but basic participation will always remain free.</p>
+        </div>
+      </details>
+
+      <!-- Account & Profile -->
+      <details class="faq-item">
+        <summary>How do I create an account?</summary>
+        <div class="answer">
+          <p>Click "Sign Up" on the homepage, enter your email/username and a password (or use GitHub/Google login). Verify your email if asked, and you're in! Choose a cool username and add a profile picture/bio to stand out.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>I forgot my password — what should I do?</summary>
+        <div class="answer">
+          <p>Go to the login page → click "Forgot password?" → enter your email → follow the reset link we send you. Check spam/junk if you don't see it.</p>
+        </div>
+      </details>
+
+      <!-- Posting & Content -->
+      <details class="faq-item">
+        <summary>What kind of content can I post?</summary>
+        <div class="answer">
+          <p>Code snippets, project showcases, questions ("How do I…?", "Why is this error happening?"), tutorials, design feedback, tech news, memes (tech-related), resource recommendations, career advice, and more. Keep it respectful, safe, and on-topic.</p>
+          <p><strong>Prohibited:</strong> spam, hate speech, bullying, explicit content, illegal material, self-promotion without value, misinformation that harms others.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I share code nicely?</summary>
+        <div class="answer">
+            <p>We Really apprecaite your codes</p>
+            <p>Most Useful languages here...</p>
+            <ul>
+                <li>Python/Flask Codes</li>
+                <li>SqlALchemy - Database.</li>
+                <li>Plain HTML Codes</li>
+                <li>Plain CSS Codes</li>
+                <li>Plain Javascript Codes</li>
+            </ul>
+            <h3>Now You can send your codes , <a href="{{ url_for('feedback_page')}}">Click here</a> to access the sending code page.</h3>
+        </div>
+      </main>
+    {% endblock %}
+    </body>
+</html>

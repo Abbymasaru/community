@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Send Code to Admin - Tech Community</title>
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #ccc;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    .container h2,
+    .container p {
+      font-weight: bold;
+      text-align: center;
+    }
+    form {
+      border: 1px solid #fff;
+      border-radius: 10px;
+      padding: 20px;
+      background: #fff;
+      width: 90%;
+      height: auto;
+      margin: 0 auto;
+      box-shadow: 0 2px 4px 6px rgba(0,0,0,0.2);
+    }
+    form label {
+      font-weight: bold;
+    }
+    .left input {
+      width: 100%;
+      height: 40px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .left select {
+      width: 100%;
+      height: 40px;
+      background: #ddd;
+      border: 1px solid #ccc;
+      color: #464fe5;
+      font-weight: bold;
+    }
+    .left select option {
+      font-weight: bold;
+    }
+    .left textarea {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .right .preview {
+      width: 100%;
+      height: 200px;
+    }
+    .right .preview pre {
+      overflow-y: scroll;
+    }
+    .submit {
+      align-items: center;
+      justify-content: center;
+    }
+    .submit button {
+      width: 20%;
+      height: 40px;
+      color: #fff;
+      background: #464fe5;
+      border-radius: 10px;
+      border: none;
+    }
+    pre {
+      border: 2px solid #464fe5;
+      border-radius: 20px;
+      overflow-y: scroll;
+      width: 10 0%;
+      height: 200px;
+      padding: 10px;
+      line-break: normal;
+    }
+  </style>
+</head>
+<body>
+  <br>
+  <br><br><br>
+<div class="container">
+  <h2 style="color: #464fe5;">Send Code to Developer</h2>
+  <p>Your code will be saved directly for me to review and use. Thank you!</p>
+  <br>
+  <form id="codeForm" action="/submit-code" method="POST" enctype="multipart/form-data">
+    <div class="split">
+      <div class="left">
+        <label>Your Name / Username</label><br>
+        <input type="text" name="username" placeholder="e.g. Abbakar or @coolcoder" required /><br>
+        <br>
+        <label>Code Title / Description</label><br>
+        <input type="text" name="title" placeholder="e.g. Login page fix" required /><br>
+        <br>
+        <label>Language</label><br>
+        <select name="language" id="language" required>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="python">Python</option>
+          <option value="javascript">JavaScript</option>
+        </select><br>
+        <br>
+        <label>Your Code</label><br>
+        <textarea name="code" id="code" rows="15" placeholder="Paste your code here..." required></textarea>
+      </div><br><br>
+
+      <div class="right">
+        <label>Live Preview</label><br><br>
+        <div class="preview">
+          <pre><code id="preview" class="language-html"></code></pre>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="submit">
+      <button type="submit">Send</button>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+<script>
+  const textarea = document.getElementById('code');
+  const preview = document.getElementById('preview');
+  const langSelect = document.getElementById('language');
+
+  function updatePreview() {
+    let lang = langSelect.value;
+    if (lang === 'html') lang = 'markup';
+    if (lang === 'javascript') lang = 'js';
+
+    preview.className = `language-${lang}`;
+    preview.textContent = textarea.value;
+    Prism.highlightElement(preview);
+  }
+
+  textarea.addEventListener('input', updatePreview);
+  langSelect.addEventListener('change', updatePreview);
+</script>
+
+</body>
+</html>

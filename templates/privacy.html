@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms of Service & Privacy Policy - [Your Platform Name]</title>
+  <link rel="stylesheet" href="static/privacy.css"/>
+</head>
+<body>
+  {% extends "base.html" %}
+  {% block title %}Privacy - Tech Community{% endblock %}
+  {% block content %}
+  <header>
+    <h1>Terms of Service & Privacy Policy</h1>
+    <div class="updated">Last updated: March 2026</div>
+    <p class="welcome">
+      Welcome to Tech Community — a friendly tech community for learners, creators, coders, designers, and tech lovers of <strong>all ages</strong>!
+    </p>
+  </header>
+
+  <main>
+    <p class="lead">
+      We welcome everyone — young explorers included!<br>
+      Parents/guardians: please guide young users and review what they share.
+    </p>
+
+    <!-- TERMS OF SERVICE -->
+    <details class="main-section" open>
+      <summary>Terms of Service</summary>
+
+      <div style="padding: 2rem 1.8rem; background: var(--card-bg); ">
+        <details class="section-item">
+          <summary>1. Introduction</summary>
+          <div class="content">
+            <p>These Terms govern your use of [Your Platform Name] — our website, app, forums, chats, events, and all related services.</p>
+          </div>
+        </details>
+
+        <details class="section-item">
+          <summary>2. Acceptance of Terms</summary>
+          <div class="content">
+            <p>By using the platform (signing up, posting, chatting, etc.), you agree to these Terms. If you disagree, please do not use it.</p>
+          </div>
+        </details>
+
+        <details class="section-item">
+          <summary>3. Who Can Use the Platform</summary>
+          <div class="content">
+            <p>Everyone is welcome — children, teens, adults, everyone!</p>
+            <p>Parents and guardians: we encourage you to supervise young children's use, help them understand safe sharing, and review their activity.</p>
+          </div>
+        </details>
+
+        <details class="section-item">
+          <summary>4. User Conduct & Safety Rules</summary>
+          <div class="content">
+            <p>Be kind, respectful, and helpful to everyone.</p>
+            <p>No bullying, hate speech, threats, spam, illegal content, explicit material, or anything harmful.</p>
+            <p>We moderate actively to keep the space safe and fun for all ages.</p>
+          </div>
+        </details>
+
+        <!-- Add more ToS sections here following the same pattern -->
+
+        <details class="section-item">
+          <summary>17. Contact Us</summary>
+          <div class="content">
+            <p>Email: <a href="mailto:support@yourplatform.com">support@yourplatform.com</a></p>
+            <p>We're here to help!</p>
+          </div>
+        </details>
+      </div>
+    </details>
+    
+    <!-- PRIVACY POLICY -->
+    <details class="main-section">
+      <summary>Privacy Policy</summary>
+
+      <div style="padding: 2rem 1.8rem; background: var(--card-bg);">
+        <details class="section-item">
+          <summary>1. We Care About Your Privacy</summary>
+          <div class="content">
+            <p>This explains what info we collect, how we use it, and how we keep it safe — especially important for young users.</p>
+          </div>
+        </details>
+
+        <details class="section-item">
+          <summary>2. Information We Collect</summary>
+          <div class="content">
+            <p>Account details (username, email, password), profile info (bio, avatar), posts/comments/code you share, device & usage data (IP, browser type).</p>
+            <p>We collect minimal data needed to run the community.</p>
+          </div>
+        </details>
+
+        <!-- Add more Privacy sections here -->
+
+        <details class="section-item">
+          <summary>13. Contact Our Privacy Team</summary>
+          <div class="content">
+            <p>Email: <a href="mailto:privacy@yourplatform.com">privacy@yourplatform.com</a></p>
+            <p>We respond quickly — parents welcome to reach out too!</p>
+          </div>
+        </details>
+      </div>
+    </details>
+  </main>
+  {% endblock %}
+</body>
+</html>
